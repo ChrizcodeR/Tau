@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+*,
+*:before,
+*:after {
+	
+}
+
+body {
+	min-height: 100vh;
+	font-family: 'Raleway', sans-serif;
+	background-color: #141B2D;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.container:hover .top:before,
+.container:active .top:before,
+.container:hover .bottom:before,
+.container:active .bottom:before,
+.container:hover .top:after,
+.container:active .top:after,
+.container:hover .bottom:after,
+.container:active .bottom:after {
+	margin-left: 270px;
+	transform-origin: -270px 50%;
+	transition-delay: 0s;
+}
+
+.container:hover .center,
+.container:active .center {
+	opacity: 1;
+	transition-delay: 0.2s;
+}
+
+.container a h2{
+	font-weight: 100;
+	font-size: 1.4em;
+	z-index: 999;
+	font-weight: 600;
+  }
+.icon{
+	z-index: 9999;
+	color: blue;
+}
+  .container a:visited{
+	color: rgb(255, 255, 255);                 
+  }
+  
+  .btn-cancelar h2{
+	position: absolute;
+	top: 20px;
+	right: 70px;
+	text-decoration: none;
+	color: rgb(255, 255, 255);
+	transition: .7s;
+	
+  }
+  
+  .btn-cancelar h2:hover{
+	color: rgb(212, 212, 212);
+	transition: .7s;
+	text-decoration: underline;
+  }
+
+.top:before,
+.bottom:before,
+.top:after,
+.bottom:after {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 200vmax;
+	height: 200vmax;
+	top: 50%;
+	left: 50%;
+	margin-top: -100vmax;
+	transform-origin: 0 50%;
+	transition: all 0.5s cubic-bezier(0.445, 0.05, 0, 1);
+	z-index: 10;
+	opacity: 0.65;
+	transition-delay: 0.2s;
+}
+
+.top:before {
+	transform: rotate(45deg);
+	background: #dd0f16;
+}
+
+.top:after {
+	transform: rotate(135deg);
+	background: #fb544e;
+}
+
+.bottom:before {
+	transform: rotate(-45deg);
+	background: #dd0f16;
+}
+
+.bottom:after {
+	transform: rotate(-135deg);
+	background: #d53737;
+}
+
+.center {
+	position: absolute;
+	width: 400px;
+	height: 400px;
+	top: 50%;
+	left: 50%;
+	margin-left: -200px;
+	margin-top: -200px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 30px;
+	opacity: 0;
+	transition: all 0.5s cubic-bezier(0.445, 0.05, 0, 1);
+	transition-delay: 0s;
+	color: #333;
+}
+
+.center input {
+	width: 100%;
+	padding: 15px;
+	margin: 5px;
+	border-radius: 1px;
+	border: 1px solid #ccc;
+	font-family: inherit;
+}
+
+#logo-df {
+	width: 350px;
+	margin-bottom: 30px;
+}
+
+form{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+
+
+.corner-button {
+	margin-top: 20px;
+	font-family: 'Lato', sans-serif;
+	letter-spacing: 0.5rem;
+	cursor: pointer;
+	background: transparent;
+	border: 0.1rem solid currentColor;
+	padding: 0.8rem 3rem;
+	font-size: 1.5rem;
+	color: #fff;
+	position: relative;
+	transition: color 0.3s;
+	z-index: 1;
+	width: 250px;
+}
+.corner-button:hover {
+	color: #d30b0b;
+}
+.corner-button:hover::before {
+	width: 0;
+}
+.corner-button:hover::after {
+	height: 0;
+}
+.corner-button:active {
+	border-width: 0.2rem;
+}
+.corner-button::before, .corner-button::after {
+	content: '';
+	position: absolute;
+	/* background: #0538b9; */
+	background: #141B2D;
+	z-index: -1;
+	transition: all 0.3s;
+}
+.corner-button::before {
+	width: calc(100% - 3rem);
+	height: calc(101% + 1rem);
+	top: -0.5rem;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.corner-button::after {
+	height: calc(100% - 3rem);
+	width: calc(101% + 1rem);
+	left: -0.1rem;
+	top: 50%;
+	transform: translateY(-50%);
+}
