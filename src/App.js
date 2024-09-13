@@ -1,13 +1,13 @@
-import { useState } from "react";
+/*import { useState } from "react";*/
 import { Routes, Route, Redirect } from "react-router-dom";
-import Topbar from "./scenes/global/Topbar";
+/*import Topbar from "./scenes/global/Topbar";*/
 /*import Sidebar from "./scenes/global/Sidebar";*/
 import Dashboard from "./scenes/dashboard";
 import EmployeManage from "./scenes/employe-manage";
 import AttendanceManage from "./scenes/attendance_manage";
 import ScheduleManage from "./scenes/schedule_manager"
 import Invoices from "./scenes/invoices";
-import Contacts from "./scenes/contacts";
+/*import Contacts from "./scenes/contacts";*/
 import Bar from "./scenes/bar";
 import Form from "./scenes/form";
 import Line from "./scenes/line";
@@ -24,7 +24,7 @@ import Page404 from "./scenes/page_404";
 
 function App() {
   const [theme, colorMode] = useMode();
-  const [isSidebar, setIsSidebar] = useState(true);
+  /*const [isSidebar, setIsSidebar] = useState(true);*/
 
   const token = localStorage.getItem("token") || null;
 
