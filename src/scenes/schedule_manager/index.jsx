@@ -4,20 +4,20 @@ import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
 import { ScheduleService } from '../../service/ScheduleService';
 import { Dialog } from 'primereact/dialog';
-import { InputText } from 'primereact/inputtext';
-import { classNames } from 'primereact/utils';
-import { InputTextarea } from 'primereact/inputtextarea';
+//import { InputText } from 'primereact/inputtext';
+//import { classNames } from 'primereact/utils';
+//import { InputTextarea } from 'primereact/inputtextarea';
 import Swal from 'sweetalert2'
-import axios from 'axios';
-import { Toolbar } from 'primereact/toolbar';
+//import axios from 'axios';
+//import { Toolbar } from 'primereact/toolbar';
 
 
 const ScheduleManage = () => {
     const [schedules, setSchedules] = useState([]);
     const [schedule, setSchedule] = useState({});
     const [scheduleDialog, setScheduleDialog] = useState(false);
-    const [deleteScheduleDialog, setDeleteScheduleDialog] = useState(false);
-    const [error, setError] = useState(null);
+    //const [deleteScheduleDialog, setDeleteScheduleDialog] = useState(false);
+    //const [error, setError] = useState(null);
     const [saveSucces, setSaveSucces] = useState(false);
 
 
