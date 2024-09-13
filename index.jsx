@@ -1,4 +1,4 @@
-import { preventDefault } from '@fullcalendar/core';
+/*import { preventDefault } from '@fullcalendar/core';*/
 import React, { useRef, useState } from 'react';
 import Webcam from 'react-webcam';
 import  AttendanceService  from '../../service/AttendanceService'
@@ -64,7 +64,7 @@ const Formulario = () => {
                 value="salidaAlmuerzo"
                 checked={state === 'entradaBreak1'}
                 onChange={event => setState(event.target.value)}
-            /> Salida almuerzo
+            /> Salida almuerzo test
             <input
                 type="radio"
                 name="state"
