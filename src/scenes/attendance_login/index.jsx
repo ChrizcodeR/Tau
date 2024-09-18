@@ -61,7 +61,7 @@ const Formulario = () => {
       <div className="contenido">
         <div className="content1">
           <div className="cam-content">
-            <img src={logoDistri} className="logo-distri" />
+            <img src={logoDistri} className="logo-distri" alt="logo-distri" />
             <Webcam
               audio={false}
               ref={webcamRef}
