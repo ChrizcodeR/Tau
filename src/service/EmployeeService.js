@@ -1,28 +1,28 @@
 import axios from 'axios';
-import { HeaderPost } from './Headers/Header';
 
-axios.defaults.baseURL ='http://107.6.54.56:8080/api'
+
+axios.defaults.baseURL ='https://backendlaravel-production-39e7.up.railway.app/api/'
 export const EmployeeService ={
     async getAll() {
-        const res = await axios.get(`all`, HeaderPost);
+        const res = await axios.get(`admin/asistencia`);
         // console.log(res.data);
         return res.data;
     },
 
     async save(empleado) {
-        const res = await axios.post(`save`, empleado, HeaderPost);
+        const res = await axios.post(`asistencia/resgistrar`, empleado);
         console.log("esto se manda",res.data)
         return res.data;
     },
 
     async getInfo(id) {
-        const res = await axios.get(`find/${id}`, HeaderPost);
+        const res = await axios.get(`admin/asistencia/${id}`);
         
         return res.data;
     },
 
-    async delete(id) {
-        const res = await axios.delete(`delete/${id}`,  HeaderPost );
+    async put(id) {
+        const res = await axios.put(`admin/asistencia/${id}`);
         console.log(res.data);
         return res.data;
     }

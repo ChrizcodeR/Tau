@@ -1,52 +1,66 @@
 import React, { useRef, useState } from "react";
-
-//COMPONENTS
 import Swal from "sweetalert2";
 import Webcam from "react-webcam";
 import Animate from "./animate";
 import Fecha from "../../components/Fecha";
-
-
-//IMAGES
-// import bgLogin from '../../img/toolsImg/background-01.jpg'
 import logoDistri from "../../img/logos/logo.png";
-
-// SERVICES
 import { AttendanceService } from "../../service/AttendanceService";
-
-// STYLES
 import "./style.css";
 import "primeicons/primeicons.css";
 
 const Formulario = () => {
   const webcamRef = useRef(null);
-  const [pinEmploye, setPinEmploye] = useState("");
-  const [state, setState] = useState("");
-  const [photo, setPhoto] = useState(null);
+  const [codigo_tr, setPinEmploye] = useState("");
+  const [tipo, setState] = useState("");
+  const [foto, setPhoto] = useState(null);
 
-  let takePhoto = async () => {
+  const takePhoto = async () => {
     const imageSrc = webcamRef.current.getScreenshot();
     setPhoto(imageSrc);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    takePhoto();
+    await takePhoto(); // Asegúrate de que la foto se toma antes de continuar
 
-    if (pinEmploye === "" || state === "") {
+    if (codigo_tr === "" || tipo === "") {
       Swal.fire({
         icon: "error",
         title: "Oops...",
         text: "Todos los campos son obligatorios!",
       });
     } else {
-      await AttendanceService.validate(pinEmploye);
+      try {
+        // Validar el código del trabajador
+        const isValid = await AttendanceService.validate(codigo_tr);
+        if (!isValid) {
+          throw new Error("Código de trabajador no válido");
+        }
+        // Crear el objeto a enviar
+        const requestData = {
+          codigo_tr,
+          tipo,
+          foto,
+        };
 
-      await AttendanceService.createArrival({
-        pinEmploye,
-        state,
-        photo,
-      });
+        // Imprimir el JSON en la consola
+        console.log("Datos enviados:", JSON.stringify(requestData, null, 2));
+
+        // Enviar los datos al servicio
+        await AttendanceService.createArrival(requestData);
+
+        Swal.fire({
+          icon: "success",
+          title: "Registro exitoso",
+          text: "La asistencia ha sido registrada correctamente.",
+        });
+      } catch (error) {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: error.message,
+        });
+      }
     }
   };
 
@@ -70,32 +84,31 @@ const Formulario = () => {
             />
           </div>
           <div className="date">
-            <Fecha/>
+            <Fecha />
           </div>
         </div>
         <div className="content2">
           <form onSubmit={handleSubmit}>
             <div className="radiogroup">
               <div className="idemploye">
-                <label>PIN EMPLEADO</label>
+                <label><h3>PIN COLABORADOR</h3></label>
                 <input
                   className="id-input"
-                  placeholder="Escriba su pin"
+                  placeholder="Ingresa tu pin"
                   type="text"
-                  name="pinEmploye"
-                  value={pinEmploye}
+                  name="codigo_tr"
+                  value={codigo_tr}
                   onChange={(event) => setPinEmploye(event.target.value)}
                 />
-                {/* <Link to={LoginAdmin}><button>swqwqw</button></Link> */}
               </div>
               <div className="wrapper">
                 <input
                   className="state"
                   id="arrival"
                   type="radio"
-                  name="arrival"
-                  value="arrival"
-                  checked={state === "arrival"}
+                  name="entrada"
+                  value="entrada"
+                  checked={tipo === "entrada"}
                   onChange={(event) => setState(event.target.value)}
                 />
                 <label className="label" htmlFor="arrival">
@@ -108,9 +121,9 @@ const Formulario = () => {
                   className="state"
                   id="breakIn1"
                   type="radio"
-                  name="breakIn1"
-                  value="breakIn1"
-                  checked={state === "breakIn1"}
+                  name="inicio_break1"
+                  value="inicio_break1"
+                  checked={tipo === "inicio_break1"}
                   onChange={(event) => setState(event.target.value)}
                 />
                 <label className="label" htmlFor="breakIn1">
@@ -123,9 +136,9 @@ const Formulario = () => {
                   className="state"
                   id="breakOut1"
                   type="radio"
-                  name="breakOut1"
-                  value="breakOut1"
-                  checked={state === "breakOut1"}
+                  name="fin_break1"
+                  value="fin_break1"
+                  checked={tipo === "fin_break1"}
                   onChange={(event) => setState(event.target.value)}
                 />
                 <label className="label" htmlFor="breakOut1">
@@ -139,9 +152,9 @@ const Formulario = () => {
                   className="state"
                   id="breakIn"
                   type="radio"
-                  name="breakIn"
-                  value="breakIn"
-                  checked={state === "breakIn"}
+                  name="salida_almuerzo"
+                  value="salida_almuerzo"
+                  checked={tipo === "salida_almuerzo"}
                   onChange={(event) => setState(event.target.value)}
                 />
                 <label className="label" htmlFor="breakIn">
@@ -154,9 +167,9 @@ const Formulario = () => {
                   className="state"
                   id="breakOut"
                   type="radio"
-                  name="breakOut"
-                  value="breakOut"
-                  checked={state === "breakOut"}
+                  name="entrada_almuerzo"
+                  value="entrada_almuerzo"
+                  checked={tipo === "entrada_almuerzo"}
                   onChange={(event) => setState(event.target.value)}
                 />
                 <label className="label" htmlFor="breakOut">
@@ -169,9 +182,9 @@ const Formulario = () => {
                   className="state"
                   id="breakIn2"
                   type="radio"
-                  name="breakIn2"
-                  value="breakIn2"
-                  checked={state === "breakIn2"}
+                  name="inicio_break2"
+                  value="inicio_break2"
+                  checked={tipo === "inicio_break2"}
                   onChange={(event) => setState(event.target.value)}
                 />
                 <label className="label" htmlFor="breakIn2">
@@ -184,9 +197,9 @@ const Formulario = () => {
                   className="state"
                   id="breakOut2"
                   type="radio"
-                  name="breakOut2"
-                  value="breakOut2"
-                  checked={state === "breakOut2"}
+                  name="fin_break2"
+                  value="fin_break2"
+                  checked={tipo === "fin_break2"}
                   onChange={(event) => setState(event.target.value)}
                 />
                 <label className="label" htmlFor="breakOut2">
@@ -200,9 +213,9 @@ const Formulario = () => {
                   className="state"
                   id="departure"
                   type="radio"
-                  name="departure"
-                  value="departure"
-                  checked={state === "departure"}
+                  name="salida"
+                  value="salida"
+                  checked={tipo === "salida"}
                   onChange={(event) => setState(event.target.value)}
                 />
                 <label className="label" htmlFor="departure">
@@ -211,7 +224,7 @@ const Formulario = () => {
                 </label>
               </div>
             </div>
-            <button type="submit" className="btn-save" onClick={takePhoto}>
+            <button type="submit" className="btn-save">
               <span className="text">REGISTRAR</span>
               <span className="icon">
                 <i className="pi pi-check"></i>
