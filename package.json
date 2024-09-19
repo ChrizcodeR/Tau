@@ -56,7 +56,7 @@
     "xlsx": "^0.18.5",
     "yup": "^1.4.0"
   },
- // "homepage": "http://distriramirez.com.co",
+ "homepage": "https://frontreactbio-production.up.railway.app",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
