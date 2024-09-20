@@ -12,7 +12,7 @@ axios.defaults.baseURL = 'https://backendlaravel-production-39e7.up.railway.app'
 const AttendanceService = {
   async validate(codigo_tr) {
     try {
-      const response = await axios.get("/api/empleados");
+      const response = await axios.get("admin/empleados");
       const empleados = response.data.empleados; // Asegúrate de acceder a `empleados` correctamente
       return empleados.find(empleado => empleado.codigo_empleado === codigo_tr) !== undefined;
     } catch (error) {
@@ -23,7 +23,7 @@ const AttendanceService = {
 
   async createArrival(data) {
     try {
-      const response = await axios.post("/asistencia/registrar", data);
+      const response = await axios.post("asistencia/registrar", data);
       return response.data;
     } catch (error) {
       console.error("Error creando la llegada:", error);
