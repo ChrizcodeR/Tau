@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+axios.defaults.headers.common['Accept'] = 'application/json';
+axios.defaults.headers.common['Content-Type'] = 'application/json';
+
 const setAxiosDefaults = () => {
     axios.defaults.baseURL = 'https://backendlaravel-production-39e7.up.railway.app';
 };
