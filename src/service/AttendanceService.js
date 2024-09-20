@@ -7,7 +7,7 @@ export const AttendanceService = {
     try {
       const response = await axios.get(`${API_URL}/admin/empleados`);
       const empleados = response.data;
-      const empleadoEncontrado = empleados.find(empleado => empleado.codigo_tr === codigo_tr);
+      const empleadoEncontrado = empleados.find(empleado => empleado.codigo_empleado === codigo_tr);
       return !!empleadoEncontrado;
     } catch (error) {
       console.error('Error obteniendo la lista de empleados:', error);
