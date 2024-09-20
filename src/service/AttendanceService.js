@@ -16,7 +16,7 @@ const AttendanceService = {
 
   async createArrival(data) {
     try {
-      const response = await axios.post("/api/attendance", data);
+      const response = await axios.post("asistencia/registrar", data);
       return response.data;
     } catch (error) {
       console.error("Error creando la llegada:", error);
