@@ -1,10 +1,13 @@
 import axios from "axios";
 
 // Configurar el token CSRF en Axios
-axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+const token = axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
 // Configura Axios para incluir el token CSRF en todas las solicitudes
 axios.defaults.headers.common['X-CSRF-TOKEN'] = token;
+
+// Configurar la URL base de Axios
+axios.defaults.baseURL = 'https://backendlaravel-production-39e7.up.railway.app';
 
 const AttendanceService = {
   async validate(codigo_tr) {
