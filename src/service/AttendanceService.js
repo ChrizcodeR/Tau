@@ -4,8 +4,8 @@ const AttendanceService = {
   async validate(codigo_tr) {
     try {
       const response = await axios.get("/api/empleados");
-      const empleados = response.data; // Asegúrate de que `response.data` sea un array
-      return empleados.find(empleado => empleado.codigo_tr === codigo_tr) !== undefined;
+      const empleados = response.data.empleados; // Asegúrate de acceder a `empleados` correctamente
+      return empleados.find(empleado => empleado.codigo_empleado === codigo_tr) !== undefined;
     } catch (error) {
       console.error("Error obteniendo la lista de empleados:", error);
       throw error;
