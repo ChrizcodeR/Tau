@@ -1,15 +1,21 @@
-import axios from "axios";
+// api.js
+import axios from 'axios';
 
+const API_URL = 'https://backendlaravel-production-39e7.up.railway.app/api'; 
 const api = axios.create({
-    baseURL: 'https://backendlaravel-production-39e7.up.railway.app/'
+  baseURL: API_URL,
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+  },
 });
 
-// Obtener el token del almacenamiento local
-//const token = JSON.parse(localStorage.getItem("token")) || null;
+// Permitir el manejo de cookies
+axios.defaults.withCredentials = true;
 
-// Configurar el interceptor para añadir el token a los encabezados de las solicitudes
-//api.interceptors.request.use(config => {
-//   return config;
-//});
+// Función para obtener el token CSRF
+export const fetchCsrfToken = () => {
+  return api.get('/sanctum/csrf-cookie');
+};
 
 export default api;
