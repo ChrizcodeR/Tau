@@ -1,5 +1,5 @@
 // AuthService.js
-import api, { fetchCsrfToken } from './api';
+import api from './api';
 
 const AuthService = {
   login: async (email, password) => {

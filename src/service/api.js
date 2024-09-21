@@ -13,9 +13,4 @@ const api = axios.create({
 // Permitir el manejo de cookies
 axios.defaults.withCredentials = true;
 
-// Función para obtener el token CSRF
-export const fetchCsrfToken = () => {
-  return api.get('/sanctum/csrf-cookie');
-};
-
 export default api;
