@@ -1,4 +1,4 @@
-import api, { fetchCsrfToken } from './api';
+import api from './api';
 
 export const AttendanceService = {
   validate: async (codigo_tr) => {
