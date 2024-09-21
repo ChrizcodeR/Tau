@@ -3,10 +3,9 @@ import api from './api';
 export const AttendanceService = {
   validate: async (codigo_tr) => {
     const token = localStorage.getItem('authToken'); // Obtener el token
-    await fetchCsrfToken();
     const response = await api.post('/validate', { codigo_tr }, {
       headers: {
-        Authorization: `Bearer ${token}`, // Enviar el token en la cabecera
+        Authorization: `Bearer ${token}`, // Agregar el token a la cabecera
       },
     });
     return response.data.isValid;
@@ -14,10 +13,9 @@ export const AttendanceService = {
 
   createArrival: async (requestData) => {
     const token = localStorage.getItem('authToken'); // Obtener el token
-    await fetchCsrfToken();
-    const response = await api.post('/createArrival', requestData, {
+    const response = await api.post('/asistencia/registrar', requestData, {
       headers: {
-        Authorization: `Bearer ${token}`, // Enviar el token en la cabecera
+        Authorization: `Bearer ${token}`, // Agregar el token a la cabecera
       },
     });
     return response.data;
