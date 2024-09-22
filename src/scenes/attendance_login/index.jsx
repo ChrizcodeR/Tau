@@ -12,7 +12,7 @@ const Formulario = () => {
   const webcamRef = useRef(null);
   const [codigo_tr, setPinEmploye] = useState("");
   const [tipo, setState] = useState("");
-  const [ setPhoto] = useState(null);
+ 
 
   const takePhoto = async () => {
     const imageSrc = webcamRef.current.getScreenshot();
