@@ -1,20 +1,19 @@
 import api from './api';
 
-// Enviar las credenciales y obtener el token
-const email = "angeldev@gmail.com";
-const password = "12345678";
-
 const AuthService = {
+
   login: async (email, password) => {
+
+    // Enviar las credenciales y obtener el token
+    const email = "angeldev@gmail.com";
+    const password = "12345678";
+
     const response = await api.post('/login', { email, password });
-    console.log("Datos enviados:", JSON.stringify(response)); // validar que esta llegando
+
     // Guardar el token en el localStorage
     if (response.data.status) {
-      const data2 = localStorage.setItem('authToken', response.data.token);
-      console.log("Datos enviados:", JSON.stringify(data2));
+      localStorage.setItem('authToken', response.data.token);
       return response.data.token;
-      
-      
     } else {
       throw new Error(response.data.message);
     }
@@ -35,17 +34,5 @@ const AuthService = {
   },
 };
 
-const loginAndUseToken = async () => {
-  try {
-    const token = await AuthService.login(email, password);
-    console.log('Token:', token);
-    // Aquí puedes usar el token para las solicitudes de AttendanceService
-  } catch (error) {
-    console.error('Error during login:', error.message);
-  }
-};
-
-// Llama a la función de inicio de sesión
-loginAndUseToken();
-
+// Exportar el servicio de autenticación
 export default AuthService;
