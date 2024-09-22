@@ -61,6 +61,7 @@ const Formulario = () => {
           throw new Error("Código de trabajador no válido");
         }
         
+        console.log("requestData antes de enviar:", requestData);
         // Enviar los datos al servicio
         await AttendanceService.validateAndCreateArrival(requestData);
 
