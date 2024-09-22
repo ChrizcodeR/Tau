@@ -32,7 +32,9 @@ export const AttendanceService = {
 
       if (employee) {
         console.log("Empleado válido:", employee);
-
+        // Ver datos que se enviarán
+        console.log("Datos a enviar:", JSON.stringify(requestData, null, 2));
+        
         // Registrar la asistencia
         const token = AuthService.getToken();
         const response = await api.post("/asistencia/registrar", requestData, {
@@ -51,20 +53,5 @@ export const AttendanceService = {
       );
       throw error; // Emvia el error para manejarlo en el componente
     }
-  },
-
-  // Función para validar los datos del formulario
-  validateRequestData: (data) => {
-    if (!data.codigo_tr) {
-      return "El código del trabajador es requerido.";
-    }
-    if (!data.fecha) {
-      return "La fecha es requerida.";
-    }
-    if (!data.hora) {
-      return "La hora es requerida.";
-    }
-    // Agrega más validaciones según sea necesario
-    return null; // No hay errores
   },
 };
