@@ -27,7 +27,8 @@ const Formulario = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const imageSrc =  takePhoto(); // Guarda la ruta de la foto
+    const imageSrc =  await takePhoto(); // Guarda la ruta de la foto
+   
 
       // Espera un momento para asegurarte de que `foto` esté actualizada
     setTimeout(async () => {
