@@ -21,9 +21,11 @@ export const AttendanceService = {
 
   validateAndCreateArrival: async (codigo_tr, requestData) => {
     try {
+
+      console.log("Datos recibidos", requestData);
+
       // Lista de empleados del AttendanceService
       const response = await AttendanceService.getEmployees();
-
       // Accede a los empleados desde la respuesta
       const employees = response.empleados;
       const employee = employees.find(
@@ -33,7 +35,7 @@ export const AttendanceService = {
       if (employee) {
         console.log("Empleado válido:", employee);
         // Ver datos que se enviarán
-        console.log("Datos a enviar registrar:", JSON.stringify(requestData, null, 2));
+        console.log("Datos a enviar a registrar:", JSON.stringify(requestData, null, 2));
 
         // Registrar la asistencia
         const token = AuthService.getToken();
