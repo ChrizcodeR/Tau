@@ -1,13 +1,18 @@
 import api from './api';
 
+// Enviar las credenciales y obtener el token
+const email = "angeldev@gmail.com";
+const password = "12345678";
+
 const AuthService = {
   login: async (email, password) => {
     const response = await api.post('/login', { email, password });
-
+    console.log(response.data.token) // validar que esta llegando
     // Guardar el token en el localStorage
     if (response.data.status) {
       localStorage.setItem('authToken', response.data.token);
       return response.data.token;
+      
     } else {
       throw new Error(response.data.message);
     }
@@ -27,10 +32,6 @@ const AuthService = {
     return localStorage.getItem('authToken');
   },
 };
-
-// Enviar las credenciales y obtener el token
-const email = "angeldev@gmail.com";
-const password = "12345678";
 
 const loginAndUseToken = async () => {
   try {
