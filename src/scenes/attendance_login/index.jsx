@@ -32,7 +32,7 @@ const Formulario = () => {
     } else {
       try {
         // Validar el código del trabajador
-        const isValid = await AttendanceService.validate(codigo_tr);
+        const isValid = await AttendanceService.validateAndCreateArrival(codigo_tr);
         if (!isValid) {
           throw new Error("Código de trabajador no válido");
         }
@@ -47,7 +47,7 @@ const Formulario = () => {
         console.log("Datos enviados:", JSON.stringify(requestData, null, 2));
 
         // Enviar los datos al servicio
-        await AttendanceService.createArrival(requestData);
+        await AttendanceService.validateAndCreateArrival(requestData);
 
         Swal.fire({
           icon: "success",
