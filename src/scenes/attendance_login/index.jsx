@@ -23,6 +23,12 @@ const Formulario = () => {
     e.preventDefault();
     await takePhoto(); // Asegúrate de que la foto se toma antes de continuar
 
+      // Espera un momento para asegurarte de que `foto` esté actualizada
+    setTimeout(async () => {
+    console.log("Código del trabajador:", codigo_tr);
+    console.log("Tipo:", tipo);
+    console.log("Foto:", foto);
+
     if (codigo_tr === "" || tipo === "") {
       Swal.fire({
         icon: "error",
@@ -31,7 +37,7 @@ const Formulario = () => {
       });
     } else {
       try {
-        
+
         // Crear el objeto a enviar
         const requestData = {
           codigo_tr,
@@ -64,7 +70,8 @@ const Formulario = () => {
         });
       }
     }
-  };
+  }, 100); // Espera un momento antes de continuar
+};
 
   return (
     <section className="container-attendence">
