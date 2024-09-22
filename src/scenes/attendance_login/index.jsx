@@ -27,11 +27,16 @@ const Formulario = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const imageSrc =  await takePhoto(); // Guarda la ruta de la foto
-   
-
-      // Espera un momento para asegurarte de que `foto` esté actualizada
-    setTimeout(async () => {
+    const imageSrc = await takePhoto(); // Espera a que la foto sea capturada
+    if (!imageSrc) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "No se pudo capturar la foto.",
+      });
+      return;
+    }
+    
     console.log("Código del trabajador:", codigo_tr);
     console.log("Tipo:", tipo);
     console.log("Foto:", imageSrc);
@@ -78,8 +83,7 @@ const Formulario = () => {
         });
       }
     }
-  }, 100); // Espera un momento antes de continuar
-};
+  };
 
   return (
     <section className="container-attendence">
