@@ -19,20 +19,22 @@ const Formulario = () => {
     if (imageSrc) {
       setPhoto(imageSrc);
       console.log("Foto capturada:", imageSrc);
+      return imageSrc; // Devuelve la imagen capturada
     } else {
       console.error("Error al capturar la foto.");
+      return null; // Retorna null si no se captura la imagen
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await takePhoto(); // Asegúrate de que la foto se toma antes de continuar
+    const imageSrc =  takePhoto(); // Guarda la ruta de la foto
 
       // Espera un momento para asegurarte de que `foto` esté actualizada
     setTimeout(async () => {
     console.log("Código del trabajador:", codigo_tr);
     console.log("Tipo:", tipo);
-    console.log("Foto:", foto);
+    console.log("Foto:", imageSrc);
 
     if (codigo_tr === "" || tipo === "") {
       Swal.fire({
@@ -47,7 +49,7 @@ const Formulario = () => {
         const requestData = {
           codigo_tr,
           tipo,
-          foto,
+          foto: imageSrc, // Usa imageSrc aquí
         };
 
         // Imprimir el JSON en la consola
