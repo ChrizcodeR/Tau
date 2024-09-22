@@ -25,8 +25,10 @@ export const AttendanceService = {
       const response = await AttendanceService.getEmployees();
 
       // Accede a los empleados desde la respuesta
-      const employees = response.empleados; 
-      const employee = employees.find((emp) => emp.codigo_empleado === codigo_tr); 
+      const employees = response.empleados;
+      const employee = employees.find(
+        (emp) => emp.codigo_empleado === codigo_tr
+      );
 
       if (employee) {
         console.log("Empleado válido:", employee);
@@ -38,14 +40,31 @@ export const AttendanceService = {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log("Datos enviados:", JSON.stringify(response.data));
         return response.data;
       } else {
         throw new Error("El código no existe");
       }
     } catch (error) {
-      console.error( "Error en la validación y creación de llegada:", error.message);
+      console.error(
+        "Error en la validación y creación de llegada:",
+        error.message
+      );
       throw error; // Emvia el error para manejarlo en el componente
     }
+  },
+
+  // Función para validar los datos del formulario
+  validateRequestData: (data) => {
+    if (!data.codigo_tr) {
+      return "El código del trabajador es requerido.";
+    }
+    if (!data.fecha) {
+      return "La fecha es requerida.";
+    }
+    if (!data.hora) {
+      return "La hora es requerida.";
+    }
+    // Agrega más validaciones según sea necesario
+    return null; // No hay errores
   },
 };
