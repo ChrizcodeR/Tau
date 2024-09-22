@@ -3,10 +3,11 @@ import api from './api';
 export const AttendanceService = {
   validate: async (codigo_tr) => {
     const token = localStorage.getItem('authToken'); // Obtener el token
-    const response = await api.get('/admin/empleados', { codigo_tr }, {
+    const response = await api.get('/admin/empleados', {
       headers: {
         Authorization: `Bearer ${token}`, // Agregar el token a la cabecera
       },
+      params: { codigo_tr }, // Pasar el código como parámetro
     });
     return response.data.isValid;
   },

@@ -1,10 +1,8 @@
-// AuthService.js
 import api from './api';
 
 const AuthService = {
   login: async (email, password) => {
-    await fetchCsrfToken(); // Obtener el token CSRF
-    const response = await api.post('/login', { email, password }); // Enviar email y password
+    const response = await api.post('/login', { email, password });
 
     // Guardar el token en el localStorage
     if (response.data.status) {
