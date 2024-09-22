@@ -33,8 +33,8 @@ export const AttendanceService = {
       if (employee) {
         console.log("Empleado válido:", employee);
         // Ver datos que se enviarán
-        console.log("Datos a enviar:", JSON.stringify(requestData, null, 2));
-        
+        console.log("Datos a enviar registrar:", JSON.stringify(requestData, null, 2));
+
         // Registrar la asistencia
         const token = AuthService.getToken();
         const response = await api.post("/asistencia/registrar", requestData, {
