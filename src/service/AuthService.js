@@ -7,11 +7,13 @@ const password = "12345678";
 const AuthService = {
   login: async (email, password) => {
     const response = await api.post('/login', { email, password });
-    console.log(response.data.token) // validar que esta llegando
+    console.log("Datos enviados:", JSON.stringify(response)); // validar que esta llegando
     // Guardar el token en el localStorage
     if (response.data.status) {
-      localStorage.setItem('authToken', response.data.token);
+      const data2 = localStorage.setItem('authToken', response.data.token);
+      console.log("Datos enviados:", JSON.stringify(data2));
       return response.data.token;
+      
       
     } else {
       throw new Error(response.data.message);
