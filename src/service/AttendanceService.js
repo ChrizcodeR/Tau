@@ -38,15 +38,13 @@ export const AttendanceService = {
             Authorization: `Bearer ${token}`,
           },
         });
+        console.log("Datos enviados:", JSON.stringify(response.data));
         return response.data;
       } else {
         throw new Error("El código no existe");
       }
     } catch (error) {
-      console.error(
-        "Error en la validación y creación de llegada:",
-        error.message
-      );
+      console.error( "Error en la validación y creación de llegada:", error.message);
       throw error; // Emvia el error para manejarlo en el componente
     }
   },
