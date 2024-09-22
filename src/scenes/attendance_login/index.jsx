@@ -16,7 +16,12 @@ const Formulario = () => {
 
   const takePhoto = async () => {
     const imageSrc = webcamRef.current.getScreenshot();
-    setPhoto(imageSrc);
+    if (imageSrc) {
+      setPhoto(imageSrc);
+      console.log("Foto capturada:", imageSrc);
+    } else {
+      console.error("Error al capturar la foto.");
+    }
   };
 
   const handleSubmit = async (e) => {
