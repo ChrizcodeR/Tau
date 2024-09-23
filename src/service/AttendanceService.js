@@ -22,7 +22,7 @@ export const AttendanceService = {
   validateAndCreateArrival: async (codigo_tr, requestData) => {
     try {
 
-      console.log("Datos recibidos", requestData);
+      console.log("Datos recibidos",codigo_tr, requestData);
 
       // Lista de empleados del AttendanceService
       const response = await AttendanceService.getEmployees();
