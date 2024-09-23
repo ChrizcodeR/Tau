@@ -59,15 +59,14 @@ const Formulario = () => {
         console.log("Datos enviados:", JSON.stringify(requestData, null, 2));
 
         // Validar el código del trabajador
-        const isValid = await AttendanceService.validateAndCreateArrival(codigo_tr);
-        if (!isValid) {
-          throw new Error("Código de trabajador no válido");
-        }
+        //const isValid = await AttendanceService.validateAndCreateArrival(codigo_tr);
+        //if (!isValid) {
+        //  throw new Error("Código de trabajador no válido");
+        //}
 
-        console.log("requestData antes de enviar:", requestData);
         // Enviar los datos al servicio
-        await AttendanceService.validateAndCreateArrival(requestData);
-
+        await AttendanceService.validateAndCreateArrival(codigo_tr, requestData);
+        
         Swal.fire({
           icon: "success",
           title: "Registro exitoso",
