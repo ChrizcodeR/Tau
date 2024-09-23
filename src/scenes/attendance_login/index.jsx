@@ -12,7 +12,6 @@ const Formulario = () => {
   const webcamRef = useRef(null);
   const [codigo_tr, setPinEmploye] = useState("");
   const [tipo, setState] = useState("");
- 
 
   const takePhoto = async () => {
     const imageSrc = webcamRef.current.getScreenshot();
@@ -36,7 +35,7 @@ const Formulario = () => {
       });
       return;
     }
-    
+
     console.log("Código del trabajador:", codigo_tr);
     console.log("Tipo:", tipo);
     console.log("Foto:", imageSrc);
@@ -49,7 +48,6 @@ const Formulario = () => {
       });
     } else {
       try {
-
         // Crear el objeto a enviar
         const requestData = {
           codigo_tr,
@@ -65,7 +63,7 @@ const Formulario = () => {
         if (!isValid) {
           throw new Error("Código de trabajador no válido");
         }
-        
+
         console.log("requestData antes de enviar:", requestData);
         // Enviar los datos al servicio
         await AttendanceService.validateAndCreateArrival(requestData);
