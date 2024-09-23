@@ -6,7 +6,7 @@ const password = "12345678";
 
 const AuthService = {
   login: async () => {
-    const response = await api.post('/login', { email, password });
+    const response = await api.post('/token', { email, password });
     console.log("Datos enviados:", JSON.stringify(response)); // validar que esta llegando
     // Guardar el token en el localStorage
     if (response.data.status) {
