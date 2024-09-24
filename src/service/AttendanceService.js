@@ -34,12 +34,14 @@ export const AttendanceService = {
 
       if (employee) {
         console.log("Empleado válido:", employee);
+
+        const requestDataJSON = JSON.stringify(requestData);
         // Ver datos que se enviarán
         console.log("Datos a enviar a registrar:", JSON.stringify(requestData, null, 2));
 
         // Registrar la asistencia
         const token = AuthService.getToken();
-        const response = await api.post("/asistencia/registrar", requestData, {
+        const response = await api.post("/asistencia/registrar", requestDataJSON, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
