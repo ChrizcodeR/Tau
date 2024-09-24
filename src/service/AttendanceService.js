@@ -7,7 +7,7 @@ export const AttendanceService = {
     await AuthService.login(email, password);
   },
 
- /* getEmployees: async () => {
+  getEmployees: async () => {
     const token = AuthService.getToken();
     if (!token) throw new Error("No token found");
 
@@ -17,15 +17,23 @@ export const AttendanceService = {
       },
     });
     return response.data;
-  }, */
+  }, 
 
   validateAndCreateArrival: async (codigo_tr, requestData) => {
     try {
 
-      console.log("Datos recibidos", requestData);
+      console.log("Datos recibidos",codigo_tr, requestData);
 
-      if (codigo_tr) {
-        console.log("Empleado válido:", codigo_tr);
+      // Lista de empleados del AttendanceService
+      const response = await AttendanceService.getEmployees();
+      // Accede a los empleados desde la respuesta
+      const employees = response.empleados;
+      const employee = employees.find(
+        (emp) => emp.codigo_empleado === codigo_tr
+      );
+
+      if (employee) {
+        console.log("Empleado válido:", employee);
 
         const requestDataJSON = JSON.stringify(requestData);
         // Ver datos que se enviarán
