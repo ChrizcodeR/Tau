@@ -59,23 +59,14 @@ const Formulario = () => {
         console.log("Datos enviados:", JSON.stringify(requestData, null, 2));
 
         // Enviar los datos al servicio
-        const responseArray = await AttendanceService.validateAndCreateArrival(
-          codigo_tr,
-          requestData
-        );
-
-        if (Array.isArray(responseArray) && responseArray.length > 0) {
-          // Crear un mensaje con los nombres y apellidos de todos los empleados en el array de respuesta
-          const empleadosInfo = responseArray.map((response) => `${response.nombre} ${response.apellido}`).join(", ");
-
-          Swal.fire({
+        await AttendanceService.validateAndCreateArrival(codigo_tr, requestData);
+         
+         Swal.fire({
             icon: "success",
             title: "Registro exitoso",
             text: `La asistencia de ${empleadosInfo} ha sido registrada correctamente.`,
           });
-        } else {
-          throw new Error("La respuesta del servidor no es válida.");
-        }
+
       } catch (error) {
         Swal.fire({
           icon: "error",
