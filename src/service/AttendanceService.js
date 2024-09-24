@@ -28,7 +28,7 @@ export const AttendanceService = {
 
       const employees = response?.empleados;
 
-      if (!employee) {
+      if (!employees) {
         console.log("Empleado válido:", employee);
         throw new Error("No se encontraron empleados en la respuesta");
       }
