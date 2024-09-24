@@ -44,7 +44,11 @@ export const AttendanceService = {
             Authorization: `Bearer ${token}`,
           },
         });
+
+        console.log("Respues Endponit resgistrar:", JSON.stringify(response.data, null, 2));
+      
         return response.data;
+        
       } else {
         throw new Error("El código no existe");
       }
