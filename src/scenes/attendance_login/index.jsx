@@ -59,7 +59,7 @@ const Formulario = () => {
         console.log("Datos enviados:", JSON.stringify(requestData, null, 2));
 
         // Enviar los datos al servicio
-        await AttendanceService.validateAndCreateArrival(codigo_tr, requestData);
+        const response = await AttendanceService.validateAndCreateArrival(codigo_tr, requestData);
         
         Swal.fire({
           icon: "success",
