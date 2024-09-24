@@ -168,14 +168,14 @@ const Formulario = () => {
               <div className="wrapper">
                 <input
                   className="state"
-                  id="breakIn"
+                  id="lunchIn"
                   type="radio"
                   name="salida_almuerzo"
                   value="salida_almuerzo"
                   checked={tipo === "salida_almuerzo"}
                   onChange={(event) => setState(event.target.value)}
                 />
-                <label className="label" htmlFor="breakIn">
+                <label className="label" htmlFor="lunchIn">
                   <div className="indicator"></div>
                   <span className="text"> Salida almuerzo</span>
                 </label>
@@ -183,14 +183,14 @@ const Formulario = () => {
               <div className="wrapper">
                 <input
                   className="state"
-                  id="breakOut"
+                  id="lunchOut"
                   type="radio"
                   name="entrada_almuerzo"
                   value="entrada_almuerzo"
                   checked={tipo === "entrada_almuerzo"}
                   onChange={(event) => setState(event.target.value)}
                 />
-                <label className="label" htmlFor="breakOut">
+                <label className="label" htmlFor="lunchOut">
                   <div className="indicator"></div>
                   <span className="text"> Entrada almuerzo</span>
                 </label>
