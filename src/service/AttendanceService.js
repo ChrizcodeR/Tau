@@ -11,7 +11,7 @@ export const AttendanceService = {
     const token = AuthService.getToken();
     if (!token) throw new Error("No token found");
 
-    const response = await api.get("/admin/empleados", {
+    const response = await api.get("/empleados", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
