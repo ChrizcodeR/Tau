@@ -17,17 +17,22 @@ export const AttendanceService = {
       },
     });
     return response.data;
-  }, 
+  },
 
   validateAndCreateArrival: async (codigo_tr, requestData) => {
     try {
-
-      console.log("Datos recibidos",codigo_tr, requestData);
+      console.log("Datos recibidos", codigo_tr, requestData);
 
       // Lista de empleados del AttendanceService
       const response = await AttendanceService.getEmployees();
-      // Accede a los empleados desde la respuesta
-      const employees = response.empleados;
+
+      const employees = response?.empleados;
+
+      if (!employee) {
+        console.log("Empleado válido:", employee);
+        throw new Error("No se encontraron empleados en la respuesta");
+      }
+
       const employee = employees.find(
         (emp) => emp.codigo_empleado === codigo_tr
       );
@@ -37,15 +42,22 @@ export const AttendanceService = {
 
         const requestDataJSON = JSON.stringify(requestData);
         // Ver datos que se enviarán
-        console.log("Datos a enviar a registrar:", JSON.stringify(requestData, null, 2));
+        console.log(
+          "Datos a enviar a registrar:",
+          JSON.stringify(requestData, null, 2)
+        );
 
         // Registrar la asistencia
         const token = AuthService.getToken();
-        const response = await api.post("/asistencia/registrar", requestDataJSON, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await api.post(
+          "/asistencia/registrar",
+          requestDataJSON,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         return response.data;
       } else {
         throw new Error("El código no existe");
