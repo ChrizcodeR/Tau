@@ -58,15 +58,20 @@ const Formulario = () => {
         // Imprimir el JSON en la consola
         console.log("Datos enviados:", JSON.stringify(requestData, null, 2));
 
+        // Validar el código del trabajador
+        //const isValid = await AttendanceService.validateAndCreateArrival(codigo_tr);
+        //if (!isValid) {
+        //  throw new Error("Código de trabajador no válido");
+        //}
+
         // Enviar los datos al servicio
         await AttendanceService.validateAndCreateArrival(codigo_tr, requestData);
-         
-         Swal.fire({
-            icon: "success",
-            title: "Registro exitoso",
-            text: `La asistencia de ha sido registrada correctamente.`,
-          });
-
+        
+        Swal.fire({
+          icon: "success",
+          title: "Registro exitoso",
+          text: "La asistencia ha sido registrada correctamente.",
+        });
       } catch (error) {
         Swal.fire({
           icon: "error",
@@ -80,10 +85,7 @@ const Formulario = () => {
   return (
     <section className="container-attendence">
       <Animate />
-      <a
-        className="btn-admin-login"
-        href="https://backendlaravel-production-39e7.up.railway.app/login"
-      >
+      <a className="btn-admin-login" href="https://backendlaravel-production-39e7.up.railway.app/login">
         <h2>
           <i className="pi pi-box  "></i> Dashboard
         </h2>
@@ -107,9 +109,7 @@ const Formulario = () => {
           <form onSubmit={handleSubmit}>
             <div className="radiogroup">
               <div className="idemploye">
-                <label>
-                  <h3>PIN COLABORADOR</h3>
-                </label>
+                <label><h3>PIN COLABORADOR</h3></label>
                 <input
                   className="id-input"
                   placeholder="Ingresa tu pin"
@@ -183,7 +183,7 @@ const Formulario = () => {
               <div className="wrapper">
                 <input
                   className="state"
-                  id="lunchOut"
+                  id="breakOut"
                   type="radio"
                   name="entrada_almuerzo"
                   value="entrada_almuerzo"
