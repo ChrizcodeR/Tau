@@ -139,12 +139,12 @@ const Formulario = () => {
                   className="state"
                   id="breakIn1"
                   type="radio"
-                  name="inicio_break1"
-                  value="inicio_break1"
-                  checked={tipo === "inicio_break1"}
+                  name="salida_break1"
+                  value="salida_break1"
+                  checked={tipo === "salida_break1"}
                   onChange={(event) => setState(event.target.value)}
                 />
-                <label className="label" htmlFor="breakIn1">
+                <label className="label" htmlFor="salida_break1">
                   <div className="indicator"></div>
                   <span className="text"> Salida Break 1</span>
                 </label>
@@ -154,12 +154,12 @@ const Formulario = () => {
                   className="state"
                   id="breakOut1"
                   type="radio"
-                  name="fin_break1"
-                  value="fin_break1"
-                  checked={tipo === "fin_break1"}
+                  name="entrada_break1"
+                  value="entrada_break1"
+                  checked={tipo === "entrada_break1"}
                   onChange={(event) => setState(event.target.value)}
                 />
-                <label className="label" htmlFor="breakOut1">
+                <label className="label" htmlFor="entrada_break1">
                   <div className="indicator"></div>
                   <span className="text"> Entrada Break 1</span>
                 </label>
@@ -200,12 +200,12 @@ const Formulario = () => {
                   className="state"
                   id="breakIn2"
                   type="radio"
-                  name="inicio_break2"
-                  value="inicio_break2"
-                  checked={tipo === "inicio_break2"}
+                  name="salida_break2"
+                  value="salida_break2"
+                  checked={tipo === "salida_break2"}
                   onChange={(event) => setState(event.target.value)}
                 />
-                <label className="label" htmlFor="breakIn2">
+                <label className="label" htmlFor="salida_break2">
                   <div className="indicator"></div>
                   <span className="text"> Salida Break 2</span>
                 </label>
@@ -215,12 +215,12 @@ const Formulario = () => {
                   className="state"
                   id="breakOut2"
                   type="radio"
-                  name="fin_break2"
-                  value="fin_break2"
-                  checked={tipo === "fin_break2"}
+                  name="entrada_break2"
+                  value="entrada_break2"
+                  checked={tipo === "entrada_break2"}
                   onChange={(event) => setState(event.target.value)}
                 />
-                <label className="label" htmlFor="breakOut2">
+                <label className="label" htmlFor="entrada_break2">
                   <div className="indicator"></div>
                   <span className="text"> Entrada Break 2</span>
                 </label>
