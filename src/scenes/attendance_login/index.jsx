@@ -59,15 +59,19 @@ const Formulario = () => {
         console.log("Datos enviados:", JSON.stringify(requestData, null, 2));
 
         // Enviar los datos al servicio
-        const responseArray = await AttendanceService.validateAndCreateArrival(codigo_tr, requestData);
+        const responseArray = await AttendanceService.validateAndCreateArrival(
+          codigo_tr,
+          requestData
+        );
 
         if (Array.isArray(responseArray) && responseArray.length > 0) {
-          const response = responseArray[0]; // Obtener el primer elemento del array
-          
+          // Crear un mensaje con los nombres y apellidos de todos los empleados en el array de respuesta
+          const empleadosInfo = responseArray.map((response) => `${response.nombre} ${response.apellido}`).join(", ");
+
           Swal.fire({
             icon: "success",
             title: "Registro exitoso",
-            text: `La asistencia de ${response.nombre} ${response.apellido} ha sido registrada correctamente.`,
+            text: `La asistencia de ${empleadosInfo} ha sido registrada correctamente.`,
           });
         } else {
           throw new Error("La respuesta del servidor no es válida.");
@@ -85,7 +89,10 @@ const Formulario = () => {
   return (
     <section className="container-attendence">
       <Animate />
-      <a className="btn-admin-login" href="https://backendlaravel-production-39e7.up.railway.app/login">
+      <a
+        className="btn-admin-login"
+        href="https://backendlaravel-production-39e7.up.railway.app/login"
+      >
         <h2>
           <i className="pi pi-box  "></i> Dashboard
         </h2>
@@ -109,7 +116,9 @@ const Formulario = () => {
           <form onSubmit={handleSubmit}>
             <div className="radiogroup">
               <div className="idemploye">
-                <label><h3>PIN COLABORADOR</h3></label>
+                <label>
+                  <h3>PIN COLABORADOR</h3>
+                </label>
                 <input
                   className="id-input"
                   placeholder="Ingresa tu pin"
