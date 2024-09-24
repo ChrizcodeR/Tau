@@ -53,3 +53,4 @@ export const AttendanceService = {
       throw error; // Envía el error para manejarlo en el componente
     }
   },
+};
