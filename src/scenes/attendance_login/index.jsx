@@ -58,19 +58,17 @@ const Formulario = () => {
         // Imprimir el JSON en la consola
         console.log("Datos enviados:", JSON.stringify(requestData, null, 2));
 
-        // Validar el código del trabajador
-        //const isValid = await AttendanceService.validateAndCreateArrival(codigo_tr);
-        //if (!isValid) {
-        //  throw new Error("Código de trabajador no válido");
-        //}
-
         // Enviar los datos al servicio
-        await AttendanceService.validateAndCreateArrival(codigo_tr, requestData);
+        const response = await AttendanceService.validateAndCreateArrival(codigo_tr, requestData);
         
+        // Extraer el nombre del empleado y el mensaje de la respuesta
+        const empleadoNombre = response.empleado;
+        const mensaje = response.message;
+
         Swal.fire({
           icon: "success",
           title: "Registro exitoso",
-          text: "Muchas gracias",
+          text: `${mensaje} ${empleadoNombre}`,
         });
       } catch (error) {
         Swal.fire({
