@@ -67,8 +67,8 @@ const Formulario = () => {
 
         Swal.fire({
           icon: "success",
-          title: `${mensaje}`,
-          text: `Muchas Gracias ${empleadoNombre}`,
+          title: `${success}`,
+          text: "Muchas Gracias",
         });
       } catch (error) {
         Swal.fire({
