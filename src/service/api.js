@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://backendlaravel-production-39e7.up.railway.app/api'; 
+const API_URL = 'https://stagingbacklaravel-production.up.railway.app/api'; 
 
 const api = axios.create({
   baseURL: API_URL,

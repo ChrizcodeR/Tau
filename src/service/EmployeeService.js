@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-axios.defaults.baseURL ='https://backendlaravel-production-39e7.up.railway.app/api/'
+axios.defaults.baseURL ='https://stagingbacklaravel-production.up.railway.app/api/'
 export const EmployeeService ={
     async getAll() {
         const res = await axios.get(`admin/asistencia`);
