@@ -83,7 +83,7 @@ const Formulario = () => {
   return (
     <section className="container-attendence">
       <Animate />
-      <a className="btn-admin-login" href="https://backendlaravel-production-39e7.up.railway.app/login">
+      <a className="btn-admin-login" href="https://stagingbacklaravel-production.up.railway.app/login">
         <h2>
           <i className="pi pi-box  "></i> Dashboard
         </h2>
@@ -181,7 +181,7 @@ const Formulario = () => {
               <div className="wrapper">
                 <input
                   className="state"
-                  id="breakOut"
+                  id="lunchOut"
                   type="radio"
                   name="entrada_almuerzo"
                   value="entrada_almuerzo"
