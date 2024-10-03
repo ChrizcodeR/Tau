@@ -62,13 +62,15 @@ const Formulario = () => {
         const response = await AttendanceService.validateAndCreateArrival(codigo_tr, requestData);
         
         // Extraer el nombre del empleado y el mensaje de la respuesta
-        //const empleadoNombre = response.empleado;
+        const empleadoNombre = response.nombre;
         const mensaje = response.success;
+        const estado = response.estado;
 
         Swal.fire({
           icon: "success",
+          title: `${empleadoNombre}`,
           title: `${mensaje}`,
-          text: "Muchas Gracias",
+          text: `${estado}`,
         });
       } catch (error) {
         Swal.fire({
