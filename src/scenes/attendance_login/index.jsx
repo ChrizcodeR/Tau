@@ -59,22 +59,26 @@ const Formulario = () => {
         console.log("Datos enviados:", JSON.stringify(requestData, null, 2));
 
         // Enviar los datos al servicio
-        const response = await AttendanceService.validateAndCreateArrival(codigo_tr, requestData);
-        
+        const response = await AttendanceService.validateAndCreateArrival(
+          codigo_tr,
+          requestData
+        );
+
         // Extraer el nombre del empleado y el mensaje de la respuesta
         const empleadoNombre = response.nombre;
         const mensaje = response.success;
-       // const estado = response.estado;
+        // const estado = response.estado;
         // Verificación condicional para mostrar "estado" solo si no es undefined
-      const estado = response.estado ? `<strong> Tu estado es: ${response.estado}</strong>` : '';
-      console.log(estado);
+        const estado = response.estado
+          ? `<strong> Tu estado es: ${response.estado}</strong>`
+          : "";
+        console.log(estado);
 
         Swal.fire({
           icon: "success",
           title: `${mensaje}`,
-          text: `${empleadoNombre}`, // muestra nombre y estado
-          html: `${estado}`,
-          confirmButtonText: 'Cool',
+          html: `<h2>${empleadoNombre}</h2></br><h3>${estado}</h3>`,
+          confirmButtonText: "Cool",
         });
       } catch (error) {
         Swal.fire({
@@ -89,7 +93,10 @@ const Formulario = () => {
   return (
     <section className="container-attendence">
       <Animate />
-      <a className="btn-admin-login" href="https://stagingbacklaravel-production.up.railway.app/login">
+      <a
+        className="btn-admin-login"
+        href="https://stagingbacklaravel-production.up.railway.app/login"
+      >
         <h2>
           <i className="pi pi-box  "></i> Dashboard
         </h2>
@@ -113,7 +120,9 @@ const Formulario = () => {
           <form onSubmit={handleSubmit}>
             <div className="radiogroup">
               <div className="idemploye">
-                <label><h3>PIN COLABORADOR</h3></label>
+                <label>
+                  <h3>PIN COLABORADOR</h3>
+                </label>
                 <input
                   className="id-input"
                   placeholder="Ingresa tu pin"
