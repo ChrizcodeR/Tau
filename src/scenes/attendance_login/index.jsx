@@ -66,14 +66,14 @@ const Formulario = () => {
         const mensaje = response.success;
        // const estado = response.estado;
         // Verificación condicional para mostrar "estado" solo si no es undefined
-      const estado = response.estado ? `<strong> Tu estado es: ${response.estado}</strong> <br />` : '';
+      const estado = response.estado ? `<strong> Tu estado es: ${response.estado}</strong>` : '';
       console.log(estado);
-      
+
         Swal.fire({
           icon: "success",
           title: `${mensaje}`,
-          html: `<h2>${empleadoNombre}</h2>`, // muestra nombre y estado
-          text: `${estado}`,
+          text: `${empleadoNombre}`, // muestra nombre y estado
+          html: `${estado}`,
           confirmButtonText: 'Cool',
         });
       } catch (error) {
