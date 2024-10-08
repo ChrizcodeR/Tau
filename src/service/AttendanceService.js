@@ -50,11 +50,34 @@ export const AttendanceService = {
         return response.data;
         
       } else {
-        throw new Error(`${response.data}`);
+        const token = AuthService.getToken();
+        const response = await api.post("/asistencia/registrar", requestDataJSON, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        console.log("Respues Endponit resgistrar:", JSON.stringify(response.data, null, 2));
+      
+        const respuesta = response.data;
+
+        throw new Error(respuesta);
       }
     } catch (error) {
-      console.error("Error en la validación y creación de llegada:", error.message);
-      throw new Error(`${response.data}`); // Envía el error para manejarlo en el componente
+      const token = AuthService.getToken();
+        const response = await api.post("/asistencia/registrar", requestDataJSON, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        console.log("Respues Endponit resgistrar:", JSON.stringify(response.data, null, 2));
+      
+        const respuesta = response.data;
+
+        throw new Error(respuesta);
+       // console.error("Error en la validación y creación de llegada:", error.message);
+      //throw new Error(`${response.data}`); // Envía el error para manejarlo en el componente
     }
   },
 };
