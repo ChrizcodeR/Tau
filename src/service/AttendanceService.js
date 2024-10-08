@@ -50,6 +50,9 @@ export const AttendanceService = {
         return response.data;
         
       } else {
+        const requestDataJSON = JSON.stringify(requestData);
+        console.log("Datos a enviar a registrar:", requestDataJSON);
+
         const token = AuthService.getToken();
         const response = await api.post("/asistencia/registrar", requestDataJSON, {
           headers: {
@@ -64,6 +67,9 @@ export const AttendanceService = {
         throw new Error(respuesta);
       }
     } catch (error) {
+      const requestDataJSON = JSON.stringify(requestData);
+      console.log("Datos a enviar a registrar:", requestDataJSON);
+
       const token = AuthService.getToken();
         const response = await api.post("/asistencia/registrar", requestDataJSON, {
           headers: {
