@@ -65,19 +65,19 @@ const Formulario = () => {
         );
 
         // Extraer el nombre del empleado y el mensaje de la respuesta
-        //const empleadoNombre = response.nombre;
+        const empleadoNombre = response.nombre;
         const mensaje = response.success;
-        // const estado = response.estado;
+        //const estado = response.estado;
         // Verificación condicional para mostrar "estado" solo si no es undefined
-        /*const estado = response.estado
+        const estado = response.estado
           ? `<strong> Tu estado es: ${response.estado}</strong>`
           : "";
-        console.log(estado); */
+        console.log(estado);
 
         Swal.fire({
           icon: "success",
           title: `${mensaje}`,
-         // html: `<h2>${empleadoNombre}</h2></br><h3>${estado}</h3>`,
+         html: `<h2>${empleadoNombre}</h2></br><h3>${estado}</h3>`,
           confirmButtonText: "Cool",
         });
       } catch (error) {
