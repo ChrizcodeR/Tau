@@ -50,40 +50,11 @@ export const AttendanceService = {
         return response.data;
         
       } else {
-        const requestDataJSON = JSON.stringify(requestData);
-        console.log("Datos a enviar a registrar:", requestDataJSON);
-
-        const token = AuthService.getToken();
-        const response = await api.post("/asistencia/registrar", requestDataJSON, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        console.log("Respues Endponit resgistrar:", JSON.stringify(response.data, null, 2));
-      
-        const respuesta = response.data;
-
-        throw new Error(respuesta);
+        throw new Error("El código no existe");
       }
     } catch (error) {
-      const requestDataJSON = JSON.stringify(requestData);
-      console.log("Datos a enviar a registrar:", requestDataJSON);
-
-      const token = AuthService.getToken();
-        const response = await api.post("/asistencia/registrar", requestDataJSON, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        console.log("Respues Endponit resgistrar:", JSON.stringify(response.data, null, 2));
-      
-        const respuesta = response.data;
-
-        throw new Error(respuesta);
-       // console.error("Error en la validación y creación de llegada:", error.message);
-      //throw new Error(`${response.data}`); // Envía el error para manejarlo en el componente
+      console.error("Error en la validación y creación de llegada:", error.message);
+      throw error; // Envía el error para manejarlo en el componente
     }
   },
 };
