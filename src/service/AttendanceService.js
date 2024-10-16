@@ -16,7 +16,7 @@ export const AttendanceService = {
         Authorization: `Bearer ${token}`,
       },
     });
-    return response.data;
+    return response.data.data;
   },
 
   validateAndCreateArrival: async (codigo_tr, requestData) => {
@@ -47,7 +47,7 @@ export const AttendanceService = {
 
         console.log("Respues Endponit resgistrar:", JSON.stringify(response.data, null, 2));
       
-        return response.data;
+        return response.data.data;
         
       } else {
         throw new Error("El código no existe");
