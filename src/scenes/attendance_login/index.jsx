@@ -101,6 +101,14 @@ const Formulario = () => {
           <i className="pi pi-box  "></i> Dashboard
         </h2>
       </a>
+      <a
+        className="btn-admin-login"
+        href="https://stagingbacklaravel-production.up.railway.app/login"
+      >
+        <h2>
+          <i className="pi pi-box  "></i> Dashboard
+        </h2>
+      </a>
       <div className="contenido">
         <div className="content1">
           <div className="cam-content">
