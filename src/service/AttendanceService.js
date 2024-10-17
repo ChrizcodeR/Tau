@@ -55,7 +55,7 @@ export const AttendanceService = {
     } catch (error) {
       console.error("Error en la validación y creación de llegada:", error.message);
       //throw error; // Envía el error para manejarlo en el componente
-      throw new Error("Ups algo salió mal con tu registro", error);
+      throw new Error(error);
     }
   },
 };
