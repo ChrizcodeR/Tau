@@ -47,7 +47,7 @@ export const AttendanceService = {
 
         console.log("Respues Endponit resgistrar:", JSON.stringify(response.data, null, 2));
       
-        return response.data.data;
+        return response.data;
         
       } else {
         throw new Error("El código no existe");
@@ -55,7 +55,7 @@ export const AttendanceService = {
     } catch (error) {
       console.error("Error en la validación y creación de llegada:", error.message);
       //throw error; // Envía el error para manejarlo en el componente
-      throw new Error(error);
+      throw new Error("Ups algo salió mal con tu registro", error);
     }
   },
 };
