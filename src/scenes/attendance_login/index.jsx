@@ -76,8 +76,8 @@ const Formulario = () => {
 
         Swal.fire({
           icon: "success",
-          title: `${mensaje}`,
-         html: `<h2>${empleadoNombre}</h2></p><h3>${estado}</h3>`,
+          title: `<h2>${mensaje}<h2></p>`,
+         html: `<h3>${empleadoNombre}</h3></p><h3>${estado}</h3>`,
           confirmButtonText: "Cool",
         });
       } catch (error) {
