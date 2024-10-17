@@ -16,7 +16,7 @@ export const AttendanceService = {
         Authorization: `Bearer ${token}`,
       },
     });
-    return response.data.data;
+    return response.data;
   },
 
   validateAndCreateArrival: async (codigo_tr, requestData) => {
