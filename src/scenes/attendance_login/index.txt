@@ -1,0 +1,89 @@
+// import React, { useRef, useState } from 'react';
+// import Webcam from 'react-webcam';
+// import  AttendanceService  from '../../service/AsistenciaService'
+
+// function Formulario() {
+//     const webcamRef = useRef({});
+//     const [data, setData] = useState ({
+//         pinEmpleado: '',
+//         estado: '',
+//         foto: ''})
+
+
+//     const Capture = async ()=>{
+//         const screenshot = await webcamRef.current.getScreenshot();
+//         console.log(screenshot);
+        
+//         data.foto = screenshot
+//         // console.log(foto);
+//     }
+    
+
+//     async function handleSubmit(event) {
+        
+//         event.preventDefault();
+
+//         await Capture()
+
+//         await AttendanceService.createArrival({ 
+//             data});                                                             
+//     }
+
+//     const handleChance = (e) => {
+//         const {name, value} = e.target
+//         setData({
+//             ...data,
+//             [name]: value
+//         })
+//     }
+
+
+//     return (
+//         <form onSubmit={handleSubmit}>
+//             <input
+//                 type="text"
+//                 name="pinEmpleado"
+//                 value={data.pinEmpleado}
+//                 onChange={handleChance} 
+//             />
+//             <input
+//                 type="radio"
+//                 name="estado"
+//                 value="horaDeLlegada"
+//                 checked={data.estado === 'horaDeLlegada'}
+//                 onChange={handleChance}
+//             /> Hora de llegada
+//             <input
+//                 type="radio"
+//                 name="estado"
+//                 value="salidaAlmuerzo"
+//                 checked={data.estado === 'salidaAlmuerzo'}
+//                 onChange={handleChance}
+//             /> Salida almuerzo
+//             <input
+//                 type="radio"
+//                 name="estado"
+//                 value="entradaAlmuerzo"
+//                 checked={data.estado === 'entradaAlmuerzo'}
+//                 onChange={handleChance}
+//             /> Entrada almuerzo
+//             <input
+//                 type="radio"
+//                 name="estado"
+//                 value="horaDeSalida"
+//                 checked={data.estado === 'horaDeSalida'}
+//                 onChange={handleChance}
+//             /> Hora de salida
+//             <Webcam
+//                 audio={false}
+//                 height={320}
+//                 ref={webcamRef}
+//                 screenshotFormat="image/jpeg"
+//                 width={480}
+//             />
+//             <button type="submit">Enviar</button>
+//         </form>
+//     );
+// }
+
+// export default Formulario;
