@@ -1,0 +1,290 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+
+@layer base {
+  :root {
+    /* Tema claro - Colores suaves y modernos */
+    --background: 210 40% 98%;
+    --foreground: 222 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 84% 4.9%;
+
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 84% 4.9%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 84% 4.9%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 210 40% 98%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 84% 4.9%;
+
+    --info: 199 89% 48%;
+    --info-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%;
+
+    --radius: 0.75rem;
+
+    /* Sidebar */
+    --sidebar-background: 210 40% 98%;
+    --sidebar-foreground: 222 84% 4.9%;
+    --sidebar-primary: 221 83% 53%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 222 84% 4.9%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 221 83% 53%;
+
+    /* Sombras suaves */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  }
+  
+  .dark {
+    /* Tema oscuro - Colores suaves y modernos */
+    --background: 222 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 84% 4.9%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 210 40% 98%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 84% 4.9%;
+
+    --info: 199 89% 48%;
+    --info-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    /* Sidebar */
+    --sidebar-background: 222 84% 4.9%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 222 84% 4.9%;
+    --sidebar-accent: 217 33% 17%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 17%;
+    --sidebar-ring: 217 91% 60%;
+
+    /* Sombras suaves para modo oscuro */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--sidebar-background)) 100%);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Componentes base unificados */
+  .glass {
+    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-lg;
+  }
+  
+  .glass-dark {
+    @apply bg-black/20 backdrop-blur-md border border-white/10 shadow-lg;
+  }
+  
+  .float-element {
+    @apply animate-float;
+  }
+  
+  .hover-lift {
+    @apply transition-all duration-300 hover:translate-y-[-4px] hover:shadow-xl;
+  }
+  
+  .gradient-border {
+    @apply relative;
+  }
+  
+  .gradient-border::before {
+    content: '';
+    @apply absolute inset-0 rounded-lg p-[1px] bg-gradient-to-r from-blue-500 to-purple-500;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+  }
+
+  /* Botones unificados */
+  .btn-primary {
+    @apply bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 
+           text-white font-medium px-4 py-2 rounded-lg shadow-md hover:shadow-lg 
+           transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply bg-gradient-to-r from-gray-100 to-gray-200 hover:from-gray-200 hover:to-gray-300 
+           text-gray-700 font-medium px-4 py-2 rounded-lg shadow-sm hover:shadow-md 
+           transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2;
+  }
+
+  .btn-success {
+    @apply bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 
+           text-white font-medium px-4 py-2 rounded-lg shadow-md hover:shadow-lg 
+           transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2;
+  }
+
+  .btn-warning {
+    @apply bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 
+           text-white font-medium px-4 py-2 rounded-lg shadow-md hover:shadow-lg 
+           transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2;
+  }
+
+  .btn-danger {
+    @apply bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 
+           text-white font-medium px-4 py-2 rounded-lg shadow-md hover:shadow-lg 
+           transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2;
+  }
+
+  .btn-outline {
+    @apply border-2 border-blue-500 text-blue-600 hover:bg-blue-50 hover:border-blue-600 
+           font-medium px-4 py-2 rounded-lg shadow-sm hover:shadow-md 
+           transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  }
+
+  /* Campos de entrada unificados */
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-200 rounded-lg bg-white/50 backdrop-blur-sm
+           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
+           transition-all duration-200 shadow-sm hover:shadow-md;
+  }
+
+  .input-field:focus {
+    @apply shadow-lg;
+  }
+
+  /* Tarjetas unificadas */
+  .card-unified {
+    @apply bg-white/90 backdrop-blur-md border border-gray-200/50 rounded-xl shadow-lg hover:shadow-xl
+           transition-all duration-300 hover:translate-y-[-2px];
+  }
+
+  .card-unified-dark {
+    @apply bg-gray-900/90 backdrop-blur-md border border-gray-700/50 rounded-xl shadow-lg hover:shadow-xl
+           transition-all duration-300 hover:translate-y-[-2px];
+  }
+
+  /* Filtros unificados */
+  .filter-container {
+    @apply bg-white/80 backdrop-blur-md border border-gray-200/50 rounded-xl shadow-md p-4 md:p-6;
+  }
+
+  .filter-container-dark {
+    @apply bg-gray-900/80 backdrop-blur-md border border-gray-700/50 rounded-xl shadow-md p-4 md:p-6;
+  }
+
+  /* Badges unificados */
+  .badge-primary {
+    @apply bg-blue-100 text-blue-700 border border-blue-200 px-2 py-1 rounded-md text-xs font-medium;
+  }
+
+  .badge-success {
+    @apply bg-green-100 text-green-700 border border-green-200 px-2 py-1 rounded-md text-xs font-medium;
+  }
+
+  .badge-warning {
+    @apply bg-orange-100 text-orange-700 border border-orange-200 px-2 py-1 rounded-md text-xs font-medium;
+  }
+
+  .badge-danger {
+    @apply bg-red-100 text-red-700 border border-red-200 px-2 py-1 rounded-md text-xs font-medium;
+  }
+
+  .badge-info {
+    @apply bg-purple-100 text-purple-700 border border-purple-200 px-2 py-1 rounded-md text-xs font-medium;
+  }
+
+  /* Tablas unificadas */
+  .table-unified {
+    @apply w-full bg-white/80 backdrop-blur-md rounded-xl shadow-lg overflow-hidden;
+  }
+
+  .table-unified-dark {
+    @apply w-full bg-gray-900/80 backdrop-blur-md rounded-xl shadow-lg overflow-hidden;
+  }
+
+  .table-header {
+    @apply bg-gradient-to-r from-gray-50 to-gray-100 text-gray-700 font-semibold;
+  }
+
+  .table-header-dark {
+    @apply bg-gradient-to-r from-gray-800 to-gray-900 text-gray-200 font-semibold;
+  }
+
+  .table-row {
+    @apply border-b border-gray-100 hover:bg-gray-50/50 transition-colors duration-200;
+  }
+
+  .table-row-dark {
+    @apply border-b border-gray-700 hover:bg-gray-800/50 transition-colors duration-200;
+  }
+
+  /* Modales unificados */
+  .modal-content {
+    @apply bg-white/95 backdrop-blur-md border border-gray-200/50 rounded-xl shadow-2xl;
+  }
+
+  .modal-content-dark {
+    @apply bg-gray-900/95 backdrop-blur-md border border-gray-700/50 rounded-xl shadow-2xl;
+  }
+}
